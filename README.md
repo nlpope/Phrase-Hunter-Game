@@ -1,7 +1,7 @@
 # techdegree-project-4
  game show app
 
-I'm currently refactoring this one so it'll be out of commission for a few days.
+currently debugging this one so it'll be out of commission for a few days.
 Apologies for the inconvenience
 
 to access:

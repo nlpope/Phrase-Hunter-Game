@@ -1,5 +1,7 @@
 # techdegree-project-4
  game show app
+ 
+ Used Daniel Eden's 'animate.css' to add bounce in effect
 
 to access:
   1. Clone repository

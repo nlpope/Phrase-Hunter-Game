@@ -12,57 +12,27 @@
      constructor(phrase){
         this.phrase = phrase.toLowerCase();
     }
-
-    /**
-     * Display phrase on game board
-     */
-    addPhraseToDisplay = () => {
-        let phrase = this.phrase;
-        [...phrase].forEach((char) => {
-            let ul = document.getElementById('phrase')
-            .getElementsByTagName('ul')[0];
-            let li = document.createElement('li');
-            if(char === ' '){
-                li.setAttribute('class', 'space');
-                li.innerHTML = ' ';
+    addPhraseToDisplay(phrase){
+        //get all list items in phrase div
+        const addLetters = document.querySelector('#phrase ul');
+        //generate array of letters from phrase
+        Array.from(phrase.phrase)
+        //loop through hiding the letters before game begins
+        .forEach(letter => {
+            if(letter !== ' '){
+                addLetters.insertAdjacentHTML('beforeend', `<li class ="hide letter ${letter}">${letter}</li>`);
             } else {
-                li.setAttribute('class', `hide letter ${char} bounceIn`);
-                li.innerHTML = `${char}`;
+                addLetters.insertAdjacentHTML('beforeend', `<li class="space"> </li>`);
             }
-            ul.appendChild(li);
-        });
+        })
     }
-
-    /**
-     * Checks if passed letter is in phrase
-     * @param (string) letter - Letter to check
-     * @return {boolean} True if letter in phrase, false otherwise
-     */
-    checkLetter = (letter) => {
-        let charArray = Array.from(this.phrase);
-        let i = 0;
-        while(charArray[i]){
-            if(charArray[i] === letter){
-                return true;
-            }
-            i++;
-        }
-        return false;
+    checkLetter(enteredLetter, activePhrase){
+        //checks if enteredLetter is in activePhrase. Should return -1 or anything >= 0
+        return activePhrase.indexOf(enteredLetter);
     }
-
-    /**
-     * Displays passed letter on screen after a match is found
-     * @param (string) letter - Letter to display
-     */
-    showMatchedLetter = (letter) => {
-        let boxes = document.getElementById('phrase')
-        .getElementsByTagName('li');
-        let i = 0;
-        while(boxes[i]){
-            if(boxes[i].innerHTML === letter){
-                boxes[i].className = `show letter ${letter}`;
-            }
-            i++;
-        }      
+    showMatchedLetter(enteredLetter){
+        //select all letters that match enteredLetter, revealing them with class 'show'
+        Array.from(document.querySelectorAll(`.hide.letter.${enteredLetter}`))
+        .forEach(match => match.className = 'show');
     }
 }

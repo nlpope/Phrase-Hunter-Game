@@ -13,6 +13,8 @@
         this.phrase = phrase.toLowerCase();
     }
     addPhraseToDisplay(phrase){
+        //in case you want to cheat a little
+        console.log(`Phrase: ${phrase.phrase} `);
         //get all list items in phrase div
         const addLetters = document.querySelector('#phrase ul');
         //generate array of letters from phrase
@@ -20,7 +22,7 @@
         //loop through hiding the letters before game begins
         .forEach(letter => {
             if(letter !== ' '){
-                addLetters.insertAdjacentHTML('beforeend', `<li class ="hide letter ${letter}">${letter}</li>`);
+                addLetters.insertAdjacentHTML('beforeend', `<li class ="hide letter ${letter} bounceIn">${letter}</li>`);
             } else {
                 addLetters.insertAdjacentHTML('beforeend', `<li class="space"> </li>`);
             }

@@ -3,7 +3,9 @@
  * app.js */
 
 //global variable to target start game button
-const startGame = document.querySelector("#btn__reset");
+const startButton = document.querySelector("#btn__reset");
+//check if overlay is hidden (style atribute is only added when hidden)
+const overlay = document.querySelector('#overlay');
 //global variable to target onscreen keys
 const gameKeys = document.querySelector('#qwerty');
 //regex to check that what is keyed is a letter (a-z)
@@ -11,17 +13,32 @@ const keyDownCheck = new RegExp(/[a-z]/);
 //global variable to store new game object in
 let newGame;
 
-startGame.addEventListener('click', () => {
+startButton.addEventListener('click', () => {
     //on click, initialize a new Game object complete w/ holders for missed count, phrases, and activePhrase
     newGame = new Game();
-    //trigger startButton method on Game object
+    //trigger startGame method from Game.js
     newGame.startGame();
-    // add keydown listener to window when startButton is clicked
+    // add keydown listener to letters when startButton is clicked
     window.addEventListener('keydown', (e) => {
         if (keyDownCheck.test(e.key.toLocaleLowerCase()) && e.key.length === 1) {
-            newGame.handleInteraction(e.key.toLocaleLowerCase());
+            newGame.handleInteraction(e.key.toLowerCase());
         }
     });
+});
+//if enter is clicked at start or reset
+window.addEventListener('keyup', (e) => {
+    if(e.key === 'Enter' && overlay.style.display !== 'none'){
+        //on click, initialize a new Game object complete w/ holders for missed count, phrases, and activePhrase
+        newGame = new Game();
+        //trigger startGame method from Game.js
+        newGame.startGame();
+        // add keydown listener to letters when 'enter' is keyed
+        window.addEventListener('keydown', (e) => {
+            if (keyDownCheck.test(e.key.toLocaleLowerCase()) && e.key.length === 1) {
+                newGame.handleInteraction(e.key.toLowerCase());
+            }
+        });
+    }
 });
 
 //add event listener to onscreen keys

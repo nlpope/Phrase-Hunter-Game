@@ -12,7 +12,7 @@ class Game{
         //get overlay
         const overlay = document.querySelector('#overlay');
         //set phrases
-        const gamePhrases = ['hello world', 'am i a joke to you', 'the grass is always greener', 'there\'s no place like home'];
+        const gamePhrases = ['hello world', 'am i a joke to you', 'the grass is always greener', 'there is no place like home', 'you can do it', 'i hate you', 'i love you', 'there is no try', 'imagination','keep moving forward'];
         //hide overlay
         overlay.style.display = 'none';
         //push each phrase in gamePhrases into empty phrase array after converting to lower case by passing them through Phrase constructor in Phrases.js
@@ -65,12 +65,10 @@ class Game{
         while(lives[i]){
            if(lives[i].src.includes('images/liveHeart.png')){
                lives[i].setAttribute('src', 'images/lostHeart.png');
-               console.log('heart');
                break;
            }
            i--;
         }
-        console.log(this.missed);
         //check for game over
         if (this.missed === lives.length){ this.gameOver('lose') };       
     }
@@ -98,7 +96,7 @@ class Game{
         //if gameStatus is equal to lose
         if (gameStatus === 'lose') {
             overlay.className = 'lose';
-            gameMessage.innerHTML = 'Better luck next time! <br><br> <img src="images/mr_krabs_sad.gif">';
+            gameMessage.innerHTML = 'Better luck next time! <br><br> <img src="images/squidward_sad.gif">';
         }
 
         // remove phraseHunter text

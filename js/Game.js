@@ -10,7 +10,7 @@ class Game{
     }
     startGame(){
         //get overlay
-        const overlay = documentquerySelector('#overlay');
+        const overlay = document.querySelector('#overlay');
         //set phrases
         const gamePhrases = ['hello world', 'am i a joke to you', 'the grass is always greener', 'there\'s no place like home'];
         //hide overlay
@@ -24,7 +24,7 @@ class Game{
     }
     getRandomPhrase(){
        //get random number between 0 & length of gamePhrases array
-       const randomNumber = Math.floor(Math.random() * gamePhrases.length)
+       const randomNumber = Math.floor(Math.random() * this.phrases.length)
        //return the selected random phrase using randomNumber
        return this.phrases[randomNumber];
     }
@@ -61,14 +61,16 @@ class Game{
         //increment missed by 1
         this.missed++;
         //remove a heart (I like seeing it from right to left)
-        const i = lives.length;
+        let i = lives.length-1;
         while(lives[i]){
            if(lives[i].src.includes('images/liveHeart.png')){
                lives[i].setAttribute('src', 'images/lostHeart.png');
+               console.log('heart');
                break;
            }
            i--;
         }
+        console.log(this.missed);
         //check for game over
         if (this.missed === lives.length){ this.gameOver('lose') };       
     }
@@ -81,41 +83,42 @@ class Game{
         if (matchedLetters.length === activePhrase.length){ return 'win'; }
     }
     gameOver(gameStatus){
-        //get the overlay
-        const overlay = document.querySelectorAll('#overlay');
-        //get reset button
-        button = document.querySelector('#btn_reset');
-        //get h1 to be altered depending on gameStatus
-        const endGameMessage = document.querySelector('#game-over-message');
-
-        //provide endGameMessage depending on gameStatus
-        if (gameStatus === 'win'){
+        // get overlay
+        const overlay = document.querySelector('#overlay');
+        // get reset button
+        const button = document.querySelector('#btn__reset');
+        // get h1 to store game message
+        const gameMessage = document.querySelector('#game-over-message');
+        
+        //if gameStatus is equal to win
+        if (gameStatus === 'win') {
             overlay.className = 'win';
-            endGameMessage.innerHTML = 'Congrats! Have another go! <br><br> <img src ="images/homerhappy.gif" height="375">';
+            gameMessage.innerHTML = 'Congrats!  Want to play again? <br><br> <img src="images/homerhappy.gif" height="375">';
         }
-        if (gameStatus === 'lose'){
+        //if gameStatus is equal to lose
+        if (gameStatus === 'lose') {
             overlay.className = 'lose';
-            endGameMessage.innerHTML = 'Better luck next time. <br><br> <img src ="images/homer_disappear.gif">';
+            gameMessage.innerHTML = 'Better luck next time! <br><br> <img src="images/homer_disappear.gif">';
         }
 
-        //remove title
-        document.querySelector('.title').innerText = " ";
-        //at gameOver change reset button's text
+        // remove phraseHunter text
+        document.querySelector('.title').innerText= " ";
+        // change button text to 'Play Again?'
         button.innerText = 'Play Again?';
-        //remove the style. Remember, the only overlay w/ style is a hidden one
+        // remove style attribute from overlay
         overlay.removeAttribute('style');
-        //clear phrase
+        // clear phrase
         document.querySelector('#phrase ul').innerHTML = '';
-        //reset hearts
-        Array.from(document.querySelectorAll('.tries img'))
-        .forEach(heart => heart.setAttribute('src', 'images/liveHeart.png'));
-        //reset onscreen keys
+        // reset hearts
+        Array.from(document.querySelectorAll(".tries img"))
+            .forEach(img => img.setAttribute('src', 'images/liveHeart.png'));
+        // reset key classes
         Array.from(document.querySelectorAll('.keyrow > .key'))
-        .forEach(key => {
-            key.className = 'key';
-            key.removeAttribute('style');
-            key.removeAttribute('disabled');
-        });
+            .forEach(key => {
+                key.className = 'key'
+                key.removeAttribute('style');
+                key.removeAttribute('disabled');
+            });
     }
 
 }

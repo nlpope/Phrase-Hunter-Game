@@ -2,12 +2,6 @@
  * Project 4 - OOP Game App
  * Phrase.js */
  
- /**In this file
-  * phrase constructor
-  * addPhraseToDisplay method
-  * checkLetter method
-  * showMatchedLetter method
-  */
  class Phrase {
      constructor(phrase){
         this.phrase = phrase.toLowerCase();

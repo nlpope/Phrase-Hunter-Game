@@ -2,9 +2,9 @@
  * Project 4 - OOP Game App
  * app.js */
 
-//global variable to target start game button
+//global variable to target stlaterart game button
 const startButton = document.querySelector("#btn__reset");
-//check if overlay is hidden (style atribute is only added when hidden)
+//global variable to check if overlay is hidden (for enter keyup event)
 const overlay = document.querySelector('#overlay');
 //global variable to target onscreen keys
 const gameKeys = document.querySelector('#qwerty');

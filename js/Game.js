@@ -93,12 +93,12 @@ class Game{
         //if gameStatus is equal to win
         if (gameStatus === 'win') {
             overlay.className = 'win';
-            gameMessage.innerHTML = 'Congrats!  Want to play again? <br><br> <img src="images/homerhappy.gif" height="375">';
+            gameMessage.innerHTML = 'Congrats!  Want to play again? <br><br> <img src="images/squidward.gif" height="375">';
         }
         //if gameStatus is equal to lose
         if (gameStatus === 'lose') {
             overlay.className = 'lose';
-            gameMessage.innerHTML = 'Better luck next time! <br><br> <img src="images/homer_disappear.gif">';
+            gameMessage.innerHTML = 'Better luck next time! <br><br> <img src="images/mr_krabs_sad.gif">';
         }
 
         // remove phraseHunter text

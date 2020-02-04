@@ -5,13 +5,15 @@ Game Show App
 ## Getting Started
 Shall we play a game?!  
 
-Once you click 'Start Game' try your luck out and guess the phrase, either by pressing a key or selecting a key.  
+Once you click 'Start Game' try your luck out and guess the phrase, either via keyboard or selecting an onscreen key.  
 
 I will give you five chances to do so before I call it quits!  
 
 Will you make Squidward happy or annoyed?  Your choice....
 
 ### Extras
+
+Incorporated Daniel Eden's 'animate.css' to add bounce in effect
 
 Added Squidward gifs to win or loose screen.
 
@@ -32,6 +34,7 @@ Clone the project - (https://github.com/nlpope/techdegree-project-4) -  and open
 ## Authors
 
 * **Noah Pope** - *JavaScript code*
+* **Daniel Eden** - *Animate.css* - (https://daneden.github.io/animate.css/)
 * **TreeHouse** - *HTML & CSS code* - (https://teamtreehouse.com)
 
 ## License
